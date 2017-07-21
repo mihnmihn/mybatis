@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mihn.dao.SspAsstSloganSignRewardMapper">
+  <resultMap id="BaseResultMap" type="com.mihn.model.SspAsstSloganSignReward">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="slogan_sign_id" jdbcType="BIGINT" property="sloganSignId" />
+    <result column="reward_type" jdbcType="TINYINT" property="rewardType" />
+    <result column="reward_value" jdbcType="VARCHAR" property="rewardValue" />
+    <result column="created_date" jdbcType="TIMESTAMP" property="createdDate" />
+    <result column="modified_date" jdbcType="TIMESTAMP" property="modifiedDate" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, slogan_sign_id, reward_type, reward_value, created_date, modified_date
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from ssp_asst_slogan_sign_reward
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from ssp_asst_slogan_sign_reward
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.mihn.model.SspAsstSloganSignReward">
+    insert into ssp_asst_slogan_sign_reward (id, slogan_sign_id, reward_type, 
+      reward_value, created_date, modified_date
+      )
+    values (#{id,jdbcType=BIGINT}, #{sloganSignId,jdbcType=BIGINT}, #{rewardType,jdbcType=TINYINT}, 
+      #{rewardValue,jdbcType=VARCHAR}, #{createdDate,jdbcType=TIMESTAMP}, #{modifiedDate,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.mihn.model.SspAsstSloganSignReward">
+    insert into ssp_asst_slogan_sign_reward
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="sloganSignId != null">
+        slogan_sign_id,
+      </if>
+      <if test="rewardType != null">
+        reward_type,
+      </if>
+      <if test="rewardValue != null">
+        reward_value,
+      </if>
+      <if test="createdDate != null">
+        created_date,
+      </if>
+      <if test="modifiedDate != null">
+        modified_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="sloganSignId != null">
+        #{sloganSignId,jdbcType=BIGINT},
+      </if>
+      <if test="rewardType != null">
+        #{rewardType,jdbcType=TINYINT},
+      </if>
+      <if test="rewardValue != null">
+        #{rewardValue,jdbcType=VARCHAR},
+      </if>
+      <if test="createdDate != null">
+        #{createdDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifiedDate != null">
+        #{modifiedDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mihn.model.SspAsstSloganSignReward">
+    update ssp_asst_slogan_sign_reward
+    <set>
+      <if test="sloganSignId != null">
+        slogan_sign_id = #{sloganSignId,jdbcType=BIGINT},
+      </if>
+      <if test="rewardType != null">
+        reward_type = #{rewardType,jdbcType=TINYINT},
+      </if>
+      <if test="rewardValue != null">
+        reward_value = #{rewardValue,jdbcType=VARCHAR},
+      </if>
+      <if test="createdDate != null">
+        created_date = #{createdDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifiedDate != null">
+        modified_date = #{modifiedDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mihn.model.SspAsstSloganSignReward">
+    update ssp_asst_slogan_sign_reward
+    set slogan_sign_id = #{sloganSignId,jdbcType=BIGINT},
+      reward_type = #{rewardType,jdbcType=TINYINT},
+      reward_value = #{rewardValue,jdbcType=VARCHAR},
+      created_date = #{createdDate,jdbcType=TIMESTAMP},
+      modified_date = #{modifiedDate,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

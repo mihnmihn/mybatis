@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mihn.dao.SspAsstActvGuessMapper">
+  <resultMap id="BaseResultMap" type="com.mihn.model.SspAsstActvGuess">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="content" jdbcType="VARCHAR" property="content" />
+    <result column="first_tip" jdbcType="VARCHAR" property="firstTip" />
+    <result column="second_tip" jdbcType="VARCHAR" property="secondTip" />
+    <result column="answer" jdbcType="VARCHAR" property="answer" />
+    <result column="sku" jdbcType="BIGINT" property="sku" />
+    <result column="content_type" jdbcType="BIT" property="contentType" />
+    <result column="state" jdbcType="BIT" property="state" />
+    <result column="yn" jdbcType="CHAR" property="yn" />
+    <result column="created_date" jdbcType="TIMESTAMP" property="createdDate" />
+    <result column="modified_date" jdbcType="TIMESTAMP" property="modifiedDate" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, title, content, first_tip, second_tip, answer, sku, content_type, state, yn, 
+    created_date, modified_date
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from ssp_asst_actv_guess
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from ssp_asst_actv_guess
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.mihn.model.SspAsstActvGuess">
+    insert into ssp_asst_actv_guess (id, title, content, 
+      first_tip, second_tip, answer, 
+      sku, content_type, state, yn, 
+      created_date, modified_date)
+    values (#{id,jdbcType=BIGINT}, #{title,jdbcType=VARCHAR}, #{content,jdbcType=VARCHAR}, 
+      #{firstTip,jdbcType=VARCHAR}, #{secondTip,jdbcType=VARCHAR}, #{answer,jdbcType=VARCHAR}, 
+      #{sku,jdbcType=BIGINT}, #{contentType,jdbcType=BIT}, #{state,jdbcType=BIT}, #{yn,jdbcType=CHAR}, 
+      #{createdDate,jdbcType=TIMESTAMP}, #{modifiedDate,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.mihn.model.SspAsstActvGuess">
+    insert into ssp_asst_actv_guess
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="title != null">
+        title,
+      </if>
+      <if test="content != null">
+        content,
+      </if>
+      <if test="firstTip != null">
+        first_tip,
+      </if>
+      <if test="secondTip != null">
+        second_tip,
+      </if>
+      <if test="answer != null">
+        answer,
+      </if>
+      <if test="sku != null">
+        sku,
+      </if>
+      <if test="contentType != null">
+        content_type,
+      </if>
+      <if test="state != null">
+        state,
+      </if>
+      <if test="yn != null">
+        yn,
+      </if>
+      <if test="createdDate != null">
+        created_date,
+      </if>
+      <if test="modifiedDate != null">
+        modified_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="title != null">
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null">
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="firstTip != null">
+        #{firstTip,jdbcType=VARCHAR},
+      </if>
+      <if test="secondTip != null">
+        #{secondTip,jdbcType=VARCHAR},
+      </if>
+      <if test="answer != null">
+        #{answer,jdbcType=VARCHAR},
+      </if>
+      <if test="sku != null">
+        #{sku,jdbcType=BIGINT},
+      </if>
+      <if test="contentType != null">
+        #{contentType,jdbcType=BIT},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=BIT},
+      </if>
+      <if test="yn != null">
+        #{yn,jdbcType=CHAR},
+      </if>
+      <if test="createdDate != null">
+        #{createdDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifiedDate != null">
+        #{modifiedDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mihn.model.SspAsstActvGuess">
+    update ssp_asst_actv_guess
+    <set>
+      <if test="title != null">
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null">
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="firstTip != null">
+        first_tip = #{firstTip,jdbcType=VARCHAR},
+      </if>
+      <if test="secondTip != null">
+        second_tip = #{secondTip,jdbcType=VARCHAR},
+      </if>
+      <if test="answer != null">
+        answer = #{answer,jdbcType=VARCHAR},
+      </if>
+      <if test="sku != null">
+        sku = #{sku,jdbcType=BIGINT},
+      </if>
+      <if test="contentType != null">
+        content_type = #{contentType,jdbcType=BIT},
+      </if>
+      <if test="state != null">
+        state = #{state,jdbcType=BIT},
+      </if>
+      <if test="yn != null">
+        yn = #{yn,jdbcType=CHAR},
+      </if>
+      <if test="createdDate != null">
+        created_date = #{createdDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifiedDate != null">
+        modified_date = #{modifiedDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mihn.model.SspAsstActvGuess">
+    update ssp_asst_actv_guess
+    set title = #{title,jdbcType=VARCHAR},
+      content = #{content,jdbcType=VARCHAR},
+      first_tip = #{firstTip,jdbcType=VARCHAR},
+      second_tip = #{secondTip,jdbcType=VARCHAR},
+      answer = #{answer,jdbcType=VARCHAR},
+      sku = #{sku,jdbcType=BIGINT},
+      content_type = #{contentType,jdbcType=BIT},
+      state = #{state,jdbcType=BIT},
+      yn = #{yn,jdbcType=CHAR},
+      created_date = #{createdDate,jdbcType=TIMESTAMP},
+      modified_date = #{modifiedDate,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
